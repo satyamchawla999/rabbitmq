@@ -1,0 +1,394 @@
+openapi: "3.0.0"
+paths:
+  /institutions:
+    post:
+      operationId: "InstitutionController_create"
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateInstitutionDto"
+      responses:
+        201:
+          description: "Institute Created Successfully!"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Institution"
+        400:
+          description: "Invalid request body "
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AllError"
+        500:
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AllError"
+      tags:
+        - "Institutions"
+    get:
+      operationId: "InstitutionController_findAll"
+      parameters: []
+      responses:
+        200:
+          description: "Institutions fetched successfullyn"
+        404:
+          description: "No institutions data Found"
+      tags:
+        - "Institutions"
+  /institutions/{id}:
+    get:
+      operationId: "InstitutionController_findOne"
+      parameters:
+        - name: "id"
+          required: true
+          in: "path"
+          schema:
+            type: "string"
+      responses:
+        200:
+          description: "Institution fetched successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Institution"
+        400:
+          description: "Invalid institute ID"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AllError"
+        404:
+          description: "No institutions data Found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AllError"
+      tags:
+        - "Institutions"
+    put:
+      operationId: "InstitutionController_update"
+      parameters:
+        - name: "id"
+          required: true
+          in: "path"
+          schema:
+            type: "string"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateInstitutionDto"
+      responses:
+        200:
+          description: "Institute updated successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Institution"
+        400:
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AllError"
+        404:
+          description: "No institute found with given Id"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AllError"
+      tags:
+        - "Institutions"
+    delete:
+      operationId: "InstitutionController_remove"
+      parameters:
+        - name: "id"
+          required: true
+          in: "path"
+          schema:
+            type: "string"
+      responses:
+        200:
+          description: "Institution Deleted Successfully!"
+        400:
+          description: "Invalid institute ID"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AllError"
+        404:
+          description: "Institution not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AllError"
+      tags:
+        - "Institutions"
+  /types:
+    post:
+      operationId: "InstitutionTypeController_create"
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateInstitutionTypeDto"
+      responses:
+        201:
+          description: "Institute-type Created Successfully!"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InstitutionType"
+        400:
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AllError"
+        500:
+          description: "Invalid request body"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AllError"
+      tags:
+        - "types"
+    get:
+      operationId: "InstitutionTypeController_findAll"
+      parameters: []
+      responses:
+        200:
+          description: "Successfully fetched Institution-type data"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InstitutionType"
+        404:
+          description: "No institution-type found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AllError"
+      tags:
+        - "types"
+  /types/{id}:
+    get:
+      operationId: "InstitutionTypeController_findOne"
+      parameters:
+        - name: "id"
+          required: true
+          in: "path"
+          schema:
+            type: "string"
+      responses:
+        200:
+          description: "Institution-type fetched successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InstitutionType"
+        400:
+          description: "Invalid institute-type ID"
+        404:
+          description: "No institute-type found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AllError"
+      tags:
+        - "types"
+    put:
+      operationId: "InstitutionTypeController_update"
+      parameters:
+        - name: "id"
+          required: true
+          in: "path"
+          schema:
+            type: "string"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateInstitutionTypeDto"
+      responses:
+        200:
+          description: "Institute-type updated successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InstitutionType"
+        400:
+          description: "Invalid institute-type id"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AllError"
+        404:
+          description: "No institute-type found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AllError"
+      tags:
+        - "types"
+    delete:
+      operationId: "InstitutionTypeController_remove"
+      parameters:
+        - name: "id"
+          required: true
+          in: "path"
+          schema:
+            type: "string"
+      responses:
+        200:
+          description: "Institution-type Deleted Successfully!"
+        400:
+          description: "Invalid institute-type ID"
+        404:
+          description: "Institution-type not found"
+      tags:
+        - "types"
+info:
+  title: "Institution"
+  description: "The Institution API description"
+  version: "1.0"
+  contact: {}
+tags: []
+servers: []
+components:
+  schemas:
+    CreateInstitutionDto:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+          description: "The name of institution"
+        logoUrl:
+          type: "string"
+          description: "The logo-url of institution"
+        type:
+          type: "string"
+          description: "The Type of institution"
+        office:
+          type: "string"
+          description: "The Office related to institution"
+        instituteTags:
+          type: "string"
+          description: "The tags for institution"
+        comments:
+          type: "string"
+          description: "The comments for institution"
+      required:
+        - "name"
+        - "logoUrl"
+        - "type"
+        - "office"
+        - "instituteTags"
+        - "comments"
+    InstitutionType:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+          description: "Institution-type name is required"
+        abbreviation:
+          type: "string"
+          description: "Institution-type abbrevation is required"
+        status:
+          type: "boolean"
+          description: "Institution-type deleted status "
+        createdAt:
+          format: "date-time"
+          type: "string"
+          description: "Institution-type date when created "
+        updatedAt:
+          format: "date-time"
+          type: "string"
+          description: "Institution-type date when updated "
+      required:
+        - "name"
+        - "abbreviation"
+        - "status"
+        - "createdAt"
+        - "updatedAt"
+    Institution:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+          description: "institution name is required"
+        logoUrl:
+          type: "string"
+          description: "institution url is optional"
+        type:
+          description: "institution type must be mongo-object-id"
+          allOf:
+            - $ref: "#/components/schemas/InstitutionType"
+        office:
+          type: "string"
+          description: "institution office is required"
+        instituteTags:
+          type: "string"
+          description: "institution tags is optional"
+        comments:
+          type: "string"
+          description: "institution comments is optional"
+        status:
+          type: "boolean"
+          description: "flags for delete"
+        createdAt:
+          format: "date-time"
+          type: "string"
+          description: "institution time when created"
+        updatedAt:
+          format: "date-time"
+          type: "string"
+          description: "institution time when updated"
+      required:
+        - "name"
+        - "logoUrl"
+        - "type"
+        - "office"
+        - "instituteTags"
+        - "comments"
+        - "status"
+        - "createdAt"
+        - "updatedAt"
+    AllError:
+      type: "object"
+      properties:
+        message:
+          description: "Array of errors"
+          type: "array"
+          items:
+            type: "string"
+        error:
+          type: "string"
+        statusCode:
+          type: "number"
+      required:
+        - "message"
+        - "error"
+        - "statusCode"
+    CreateInstitutionTypeDto:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+          description: "The name of institution-type"
+        abbreviation:
+          type: "string"
+          description: "The abbreviation"
+      required:
+        - "name"
+        - "abbreviation"

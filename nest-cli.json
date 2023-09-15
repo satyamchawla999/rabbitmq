@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json.schemastore.org/nest-cli",
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps/routes_handler/src",
+  "compilerOptions": {
+    "deleteOutDir": true,
+    "webpack": true,
+    "tsConfigPath": "apps/routes_handler/tsconfig.app.json"
+  },
+  "monorepo": true,
+  "root": "apps/routes_handler",
+  "projects": {
+    "routes_handler": {
+      "type": "application",
+      "root": "apps/routes_handler",
+      "entryFile": "main",
+      "sourceRoot": "apps/routes_handler/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/routes_handler/tsconfig.app.json"
+      }
+    },
+    "microservice_handler": {
+      "type": "application",
+      "root": "apps/microservice_handler",
+      "entryFile": "main",
+      "sourceRoot": "apps/microservice_handler/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/microservice_handler/tsconfig.app.json"
+      }
+    },
+    "institution-type": {
+      "type": "library",
+      "root": "libs/institution-type",
+      "entryFile": "index",
+      "sourceRoot": "libs/institution-type/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/institution-type/tsconfig.lib.json"
+      }
+    },
+    "institution": {
+      "type": "library",
+      "root": "libs/institution",
+      "entryFile": "index",
+      "sourceRoot": "libs/institution/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/institution/tsconfig.lib.json"
+      }
+    }
+  }
+}
